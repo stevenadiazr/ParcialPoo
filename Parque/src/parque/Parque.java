@@ -6,10 +6,10 @@ import java.util.Scanner;
 
 public class Parque {
     static Scanner in = new Scanner(System.in); 
-    public ArrayList<boolean[]> carritoMontania;
-    public ArrayList<boolean[]> carritoChicago;
-    public ArrayList<boolean[]> carritoGusanito;
-    public boolean[] asientos = new boolean[] {true, true};
+    public ArrayList<ArrayList<Boolean>> carritoMontania;
+    public ArrayList<ArrayList<Boolean>> carritoChicago;
+    public ArrayList<ArrayList<Boolean>> carritoGusanito;
+    public ArrayList<Boolean> asientos;
     public int cantCarritos;
     
     public static void main(String[] args) {
@@ -188,7 +188,9 @@ public class Parque {
         }
     }
     
-    public static void inicializarMatriz(ArrayList<boolean[]> carrito, boolean[] asientos, int cantCarritos){
+    public static void inicializarMatriz(ArrayList<ArrayList<Boolean>> carrito, ArrayList<Boolean> asientos, int cantCarritos){
+        asientos.add(true);
+        asientos.add(true);
         for(int i = 0; i < cantCarritos; i++){
             carrito.add(asientos);
         }
