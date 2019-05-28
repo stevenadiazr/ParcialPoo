@@ -6,7 +6,9 @@ import java.util.Scanner;
 
 public class Parque {
     static Scanner in = new Scanner(System.in); 
-    public ArrayList<boolean[]> carrito;
+    public ArrayList<boolean[]> carritoMontania;
+    public ArrayList<boolean[]> carritoChicago;
+    public ArrayList<boolean[]> carritoGusanito;
     public boolean[] asientos = new boolean[] {true, true};
     public int cantCarritos;
     
@@ -41,7 +43,7 @@ public class Parque {
         int personas = 0;
         boolean continuar = true;
         cantCarritos = 12;
-        inicializarMatriz(carrito, asientos, cantCarritos);
+        inicializarMatriz(carritoGusanito, asientos, cantCarritos);
         do{
             System.out.println("Seleccione la accion que desea realizar: \n1. Agregar personas. \n2. Mostrar asientos. \n3. Ver ganancias. \n0. Salir.");
             try{
@@ -91,7 +93,7 @@ public class Parque {
         int personas = 0;
         boolean continuar = true;
         cantCarritos = 24;
-        inicializarMatriz(carrito, asientos, cantCarritos);
+        inicializarMatriz(carritoMontania, asientos, cantCarritos);
         do{
             System.out.println("Seleccione la accion que desea realizar: \n1. Agregar personas. \n2. Mostrar asientos. \n3. Ver ganancias. \n0. Salir.");
             try{
@@ -141,7 +143,7 @@ public class Parque {
         int personas = 0;
         boolean continuar = true;
         cantCarritos = 24;
-        inicializarMatriz(carrito, asientos, cantCarritos);
+        inicializarMatriz(carritoChicago, asientos, cantCarritos);
         do{
             System.out.println("Seleccione la accion que desea realizar: \n1. Agregar personas. \n2. Mostrar asientos. \n3. Ver ganancias. \n0. Salir.");
             try{
