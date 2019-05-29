@@ -6,11 +6,9 @@ import java.util.Scanner;
 
 public class Parque {
     static Scanner in = new Scanner(System.in); 
-    public ArrayList<ArrayList<Boolean>> carritoMontania;
-    public ArrayList<ArrayList<Boolean>> carritoChicago;
-    public ArrayList<ArrayList<Boolean>> carritoGusanito;
-    public ArrayList<Boolean> asientos;
-    public int cantCarritos;
+
+   
+  
     
     public static void main(String[] args) {
         menu();
@@ -21,9 +19,28 @@ public class Parque {
         int opcion = 0; 
         int rueda = 0;  
         do{
-            System.out.println("Ingrese la rueda a la que desea ingresar: \n1. Gusanito. \n2 Chicago. \n3. Montania Rusa");
+            System.out.println("Ingrese la rueda a la que desea ingresar: \n1. Gusanito. \n2 Chicago. \n3. Montania Rusa \n0.Salir");
             try{
-                rueda = in.nextInt();
+                opcion= in.nextInt();
+                switch(opcion){
+                    case 1:
+                        gusanito();
+                        break;
+                        
+                    case 2:
+                        chicago();
+                        break;    
+                    case 3:
+                        montaniaRusa();
+                        break;
+                    case 0:
+                        
+                        continuar=false;
+                        break;
+                            
+                }
+                
+                
                 if(rueda < 1 && rueda > 3){
                     throw new ValorNoValidoExcepcion();
                 }
@@ -38,17 +55,22 @@ public class Parque {
         }while(continuar);
     }
     
-    public void gusanito(){
-        int opcion = 0;
+    public static void gusanito(){
+        int opc = 0;
         int personas = 0;
         boolean continuar = true;
+        Gusanito g=new Gusanito();
+        ArrayList<ArrayList<Boolean>> carritoGusanito=new ArrayList<>();
+        ArrayList<Boolean> asientos=new ArrayList<>();
+        int cantCarritos;
         cantCarritos = 12;
         inicializarMatriz(carritoGusanito, asientos, cantCarritos);
+       
         do{
             System.out.println("Seleccione la accion que desea realizar: \n1. Agregar personas. \n2. Mostrar asientos. \n3. Ver ganancias. \n0. Salir.");
             try{
-                opcion = in.nextInt();
-                if (opcion < 0 && opcion >3){
+                opc = in.nextInt();
+                if (opc< 0 && opc >3){
                     throw new ValorNoValidoExcepcion();
                 } else{
                     continuar = false;
@@ -61,7 +83,7 @@ public class Parque {
                 in.nextLine();
             }
         } while(continuar);
-        if(opcion == 1){
+        if(opc== 1){
             do{
                 System.out.println("Ingrese cantidad de personas, siendo 2 el maximo: ");
                 try{
@@ -77,22 +99,27 @@ public class Parque {
                     in.nextLine();
                 }
             }while(continuar);
-            //llama a la funcion agregar
+                g.agregarAsientos(asientos, asientos, cantCarritos, personas);
         } else{
-            switch(opcion){
+            switch(opc){
                 case 2:
-                    // llama a mostrar asiento
+                    g.mostrarAsientos(asientos, asientos);
                 case 3:
-                    // llama a mostrar ganancia
+                    g.mostrarGanancia(asientos, asientos, personas);
             }
         }
     }
     
-    public void montaniaRusa(int cantPersonas){
+    public static void montaniaRusa(){
         int opcion = 0;
         int personas = 0;
         boolean continuar = true;
+        ArrayList<ArrayList<Boolean>> carritoMontania=new ArrayList<>();
+        ArrayList<Boolean> asientos=new ArrayList<>();
+        Rusa ru= new Rusa();
+        int cantCarritos;
         cantCarritos = 24;
+        
         inicializarMatriz(carritoMontania, asientos, cantCarritos);
         do{
             System.out.println("Seleccione la accion que desea realizar: \n1. Agregar personas. \n2. Mostrar asientos. \n3. Ver ganancias. \n0. Salir.");
@@ -127,22 +154,26 @@ public class Parque {
                     in.nextLine();
                 }
             }while(continuar);
-            //llama funcion agregar
+            ru.agregarAsientos(asientos, asientos, cantCarritos, personas);
         }else{
             switch(opcion){
                 case 2:
-                    // llama a mostrar asiento
+                    ru.mostrarAsientos(asientos, asientos);
                 case 3:
-                    // llama a mostrar ganancia
+                    ru.mostrarGanancia(asientos, asientos, personas);
             }
         }
     }
     
-    public void chicago(int cantPersonas){
+    public static void chicago(){
         int opcion = 0;
         int personas = 0;
         boolean continuar = true;
+        int cantCarritos;
         cantCarritos = 24;
+        ArrayList<ArrayList<Boolean>> carritoChicago=new ArrayList<>();
+        ArrayList<Boolean> asientos=new ArrayList<>();
+        Chicago c=new Chicago();
         inicializarMatriz(carritoChicago, asientos, cantCarritos);
         do{
             System.out.println("Seleccione la accion que desea realizar: \n1. Agregar personas. \n2. Mostrar asientos. \n3. Ver ganancias. \n0. Salir.");
@@ -177,13 +208,13 @@ public class Parque {
                     in.nextLine();
                 }
             }while(continuar);
-            //llamar funcion agregar
+            c.agregarAsientos(asientos, asientos, cantCarritos, personas);
         }else{
             switch(opcion){
                 case 2:
-                    // llama a mostrar asiento
+                    c.mostrarAsientos(asientos, asientos);
                 case 3:
-                    // llama a mostrar ganancia
+                    c.mostrarGanancia(asientos, asientos, personas);
             }
         }
     }
